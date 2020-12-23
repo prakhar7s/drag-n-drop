@@ -1,0 +1,161 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(to left, rgb(47, 201, 180), rgb(41, 70, 197));
+  background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+}
+
+#container {
+  background-color: rgba(0, 0, 0, 0.137);
+  backdrop-filter: blur(20px);
+  width: 35%;
+  height: 70%;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgab(0, 0, 0, 0.1);
+}
+
+#container #delete-all {
+  text-align: right;
+  margin: 10px;
+  color: rgb(223, 25, 25);
+  font-weight: 700;
+  font-size: 18px;
+  display: none;
+  cursor: pointer;
+}
+
+#container #text {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  line-height: 350px;
+  text-align: center;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+}
+
+#container.active {
+  border: 4px dashed rgba(255, 0, 0, 0.623);
+}
+
+#container #dropped-list {
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#dropped-list .dropped-item {
+  display: flex;
+  margin: 10px 0;
+  position: relative;
+  padding: 15px;
+}
+
+#dropped-list .dropped-item:hover {
+  background-color: rgba(212, 207, 207, 0.237);
+}
+
+.dropped-item .preview {
+  height: 55px;
+  width: 70px;
+}
+
+.dropped-item .preview img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  animation: previewEntry 1s linear;
+}
+
+.dropped-item .file-info {
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  transition: all 2s;
+  animation: infoEntry 1s forwards;
+  opacity: 0;
+  animation-delay: 500ms;
+}
+
+.dropped-item .file-info span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 18px;
+  width: 100%;
+}
+
+.dropped-item .file-info span:first-of-type {
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+}
+
+.dropped-item .file-info span:nth-child(2) {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+.dropped-item .fa {
+  color: rgb(0, 0, 0);
+  animation: infoEntry 1s forwards;
+  opacity: 0;
+  animation-delay: 500ms;
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Animations */
+
+@keyframes previewEntry {
+  0% {
+    transform: translate3d(25px, 50px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes infoEntry {
+  0% {
+    transform: translate3d(0, 50px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+/* Scroll bar */
+#container::-webkit-scrollbar {
+  width: 8px;
+  border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#container::-webkit-scrollbar-thumb {
+  background: rgb(196, 195, 195);
+}
